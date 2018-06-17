@@ -1,6 +1,5 @@
 package net.runelite.client.plugins.remap;
 
-import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.event.KeyEvent;
 import javax.inject.Inject;
@@ -9,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
@@ -18,7 +18,8 @@ import net.runelite.client.plugins.remap.modes.TypingMode;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
-	name = "Modal bindings"
+	name = "Modal bindings",
+	description = "Remap functionality in rs to other keys"
 )
 @Slf4j
 public class RemapPlugin extends Plugin
