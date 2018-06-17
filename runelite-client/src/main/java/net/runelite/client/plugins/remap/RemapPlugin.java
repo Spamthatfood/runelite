@@ -79,10 +79,7 @@ public class RemapPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(final GameStateChanged event)
 	{
-		if (event.getGameState() == GameState.LOGGED_IN)
-		{
-			active = true;
-		}
+		active = event.getGameState() == GameState.LOGGED_IN;
 	}
 
 	public void setMode(Mode mode)
