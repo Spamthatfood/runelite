@@ -5,8 +5,11 @@ import java.awt.event.KeyEvent;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.VarClientStr;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.KeyListener;
@@ -29,6 +32,12 @@ public class RemapPlugin extends Plugin
 	private RemapConfig config;
 
 	@Inject
+	private Client client;
+
+	@Inject
+	private ClientThread clientThread;
+
+	@Inject
 	private KeyManager keyManager;
 
 	@Inject
@@ -45,10 +54,10 @@ public class RemapPlugin extends Plugin
 	private Mode currentMode;
 
 	@Getter
-	private Mode playMode = new PlayMode(this);
+	private Mode playMode;
 
 	@Getter
-	private Mode typeMode = new TypingMode(this);
+	private Mode typeMode;
 
 	@Provides
 	RemapConfig provideConfig(ConfigManager configManager)
@@ -63,6 +72,9 @@ public class RemapPlugin extends Plugin
 
 		makeKeyListener();
 		keyManager.registerKeyListener(keyListener);
+
+		playMode = new PlayMode(this);
+		typeMode = new TypingMode(this);
 
 		playMode.setup();
 		typeMode.setup();
@@ -80,7 +92,7 @@ public class RemapPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(final GameStateChanged event)
 	{
-		active = event.getGameState() == GameState.LOGGED_IN;
+		active = event.getGameState() != GameState.LOGIN_SCREEN;
 	}
 
 	public void setMode(Mode mode)

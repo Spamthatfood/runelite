@@ -41,15 +41,6 @@ public class KeyToMode extends Remapper
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		if (e.getKeyCode() == fromKey && consume)
-		{
-			e.consume();
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e)
-	{
 		if (e.getKeyCode() == fromKey)
 		{
 			if (consume)
@@ -58,6 +49,15 @@ public class KeyToMode extends Remapper
 			}
 
 			remapPlugin.setMode(toMode);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		if (e.getKeyCode() == fromKey && consume)
+		{
+			e.consume();
 		}
 	}
 }

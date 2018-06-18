@@ -3,6 +3,7 @@ package net.runelite.client.plugins.remap.modes;
 import java.awt.event.KeyEvent;
 import net.runelite.client.plugins.remap.Mode;
 import net.runelite.client.plugins.remap.RemapPlugin;
+import net.runelite.client.plugins.remap.types.CharToChar;
 import net.runelite.client.plugins.remap.types.CharToMode;
 import net.runelite.client.plugins.remap.types.KeyToKey;
 import net.runelite.client.plugins.remap.types.KeyToMode;
@@ -28,18 +29,24 @@ public class PlayMode extends Mode
 		add(new KeyToKey(KeyEvent.VK_F, KeyEvent.VK_F1)); // attack (fight)
 		add(new KeyToKey(KeyEvent.VK_R, KeyEvent.VK_F4)); // equip (remove)
 		add(new KeyToKey(KeyEvent.VK_E, KeyEvent.VK_F5)); // prayer
-		add(new KeyToKey(KeyEvent.VK_X, KeyEvent.VK_F6)); // magic
+		add(new KeyToKey(KeyEvent.VK_C, KeyEvent.VK_F6)); // magic
 
 		// chats
 		add(new CharToMode('t', getPlugin().getTypeMode()));
 		add(new CharToMode('T', getPlugin().getTypeMode()));
-
-		add(new CharToMode('c', getPlugin().getTypeMode(), '/'));
-		add(new CharToMode('C', getPlugin().getTypeMode(), '/'));
-
+		add(new KeyToMode(KeyEvent.VK_ENTER, getPlugin().getTypeMode()));
 		add(new KeyToMode(KeyEvent.VK_TAB, getPlugin().getTypeMode(), false));
 
+		add(new CharToMode('/', getPlugin().getTypeMode(), '/'));
+
 		// passthrough
+		add(CharToChar.passthrough('1'));
+		add(CharToChar.passthrough('2'));
+		add(CharToChar.passthrough('3'));
+		add(CharToChar.passthrough('4'));
+		add(CharToChar.passthrough('5'));
+		add(KeyToKey.passthrough(KeyEvent.VK_BACK_SPACE));
+		add(KeyToKey.passthrough(KeyEvent.VK_SPACE));
 		add(KeyToKey.passthrough(KeyEvent.VK_SHIFT));
 		add(KeyToKey.passthrough(KeyEvent.VK_UP));
 		add(KeyToKey.passthrough(KeyEvent.VK_LEFT));
