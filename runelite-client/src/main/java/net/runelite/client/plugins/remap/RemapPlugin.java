@@ -79,6 +79,8 @@ public class RemapPlugin extends Plugin
 		typeMode.setup();
 
 		setMode(playMode);
+
+		active = client.getGameState() !=  GameState.LOGIN_SCREEN;
 	}
 
 	@Override
