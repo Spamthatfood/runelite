@@ -25,6 +25,8 @@ public class PlayMode extends Mode
 		add(new KeyToKey(KeyEvent.VK_S, KeyEvent.VK_DOWN));
 		add(new KeyToKey(KeyEvent.VK_D, KeyEvent.VK_RIGHT));
 
+		add(new KeyToKey(KeyEvent.VK_X, KeyEvent.VK_CONTROL)); // x control
+
 		add(new KeyToKey(KeyEvent.VK_Q, KeyEvent.VK_ESCAPE)); // inven
 		add(new KeyToKey(KeyEvent.VK_F, KeyEvent.VK_F1)); // attack (fight)
 		add(new KeyToKey(KeyEvent.VK_R, KeyEvent.VK_F4)); // equip (remove)
@@ -58,5 +60,6 @@ public class PlayMode extends Mode
 		add(KeyToKey.passthrough(KeyEvent.VK_LEFT));
 		add(KeyToKey.passthrough(KeyEvent.VK_DOWN));
 		add(KeyToKey.passthrough(KeyEvent.VK_RIGHT));
+		add(KeyToKey.passthrough(KeyEvent.VK_CONTROL));
 	}
 }
