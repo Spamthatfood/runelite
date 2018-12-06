@@ -37,7 +37,6 @@ public class PlayMode extends Mode
 		add(new CharToMode('t', getPlugin().getTypeMode()));
 		add(new CharToMode('T', getPlugin().getTypeMode()));
 		add(new KeyToMode(KeyEvent.VK_ENTER, getPlugin().getTypeMode()));
-		add(new KeyToMode(KeyEvent.VK_TAB, getPlugin().getTypeMode(), false));
 
 		add(new CharToMode('/', getPlugin().getTypeMode(), '/'));
 
@@ -54,6 +53,7 @@ public class PlayMode extends Mode
 		add(CharToChar.passthrough('0'));
 		add(KeyToKey.passthrough(KeyEvent.VK_BACK_SPACE));
 		add(KeyToKey.passthrough(KeyEvent.VK_ENTER));
+		add(KeyToKey.passthrough(KeyEvent.VK_TAB));
 		add(KeyToKey.passthrough(KeyEvent.VK_SPACE));
 		add(KeyToKey.passthrough(KeyEvent.VK_SHIFT));
 		add(KeyToKey.passthrough(KeyEvent.VK_UP));
@@ -61,5 +61,35 @@ public class PlayMode extends Mode
 		add(KeyToKey.passthrough(KeyEvent.VK_DOWN));
 		add(KeyToKey.passthrough(KeyEvent.VK_RIGHT));
 		add(KeyToKey.passthrough(KeyEvent.VK_CONTROL));
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+		plugin.getClientThread().invoke(() -> {
+			plugin.lockChat();
+		});
+
+		super.keyPressed(e);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		plugin.getClientThread().invoke(() -> {
+			plugin.lockChat();
+		});
+
+		super.keyReleased(e);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		plugin.getClientThread().invoke(() -> {
+			plugin.lockChat();
+		});
+
+		super.keyTyped(e);
 	}
 }
