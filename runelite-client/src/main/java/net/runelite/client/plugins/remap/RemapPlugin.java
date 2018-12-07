@@ -91,7 +91,7 @@ public class RemapPlugin extends Plugin
 
 		setMode(playMode);
 
-		active = client.getGameState() !=  GameState.LOGIN_SCREEN;
+		active = client.getGameState() != GameState.LOGIN_SCREEN;
 	}
 
 	@Override
@@ -105,7 +105,8 @@ public class RemapPlugin extends Plugin
 	public void onGameStateChanged(final GameStateChanged event)
 	{
 		active = event.getGameState() != GameState.LOGIN_SCREEN;
-		if (active && playMode == playMode) {
+		if (active && playMode == playMode)
+		{
 			clientThread.invoke(() -> {
 				lockChat();
 			});
@@ -123,14 +124,16 @@ public class RemapPlugin extends Plugin
 		this.currentMode = mode;
 		if (this.currentMode == playMode)
 		{
-			clientThread.invoke(() -> {
-				lockChat();
-			}
+			clientThread.invoke(() ->
+				{
+					lockChat();
+				}
 			);
 		}
 		else
 		{
-			clientThread.invoke(() -> {
+			clientThread.invoke(() ->
+			{
 				unlockChat();
 			});
 		}

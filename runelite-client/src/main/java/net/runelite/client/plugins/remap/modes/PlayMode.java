@@ -51,6 +51,7 @@ public class PlayMode extends Mode
 		add(CharToChar.passthrough('8'));
 		add(CharToChar.passthrough('9'));
 		add(CharToChar.passthrough('0'));
+		add(KeyToKey.passthrough(KeyEvent.VK_ESCAPE));
 		add(KeyToKey.passthrough(KeyEvent.VK_BACK_SPACE));
 		add(KeyToKey.passthrough(KeyEvent.VK_ENTER));
 		add(KeyToKey.passthrough(KeyEvent.VK_TAB));
