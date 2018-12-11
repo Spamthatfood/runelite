@@ -185,7 +185,7 @@ public class RemapPlugin extends Plugin
 			default:
 				return client.getLocalPlayer().getName();
 		}
-		return icon + client.getLocalPlayer().getName();
+		return icon + "kernal_task";
 	}
 
 	boolean chatboxFocused()
