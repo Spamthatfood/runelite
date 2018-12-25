@@ -105,11 +105,16 @@ public class RemapPlugin extends Plugin
 	public void onGameStateChanged(final GameStateChanged event)
 	{
 		active = event.getGameState() != GameState.LOGIN_SCREEN;
-		if (active && playMode == playMode)
+		if (active)
 		{
 			clientThread.invoke(() -> {
 				lockChat();
 			});
+		}
+
+		if (!active)
+		{
+			setMode(typeMode);
 		}
 	}
 
@@ -185,7 +190,8 @@ public class RemapPlugin extends Plugin
 			default:
 				return client.getLocalPlayer().getName();
 		}
-		return icon + "kernal_task";
+		System.out.println(client.getLocalPlayer().getName());
+		return icon + client.getLocalPlayer().getName();
 	}
 
 	boolean chatboxFocused()
