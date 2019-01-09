@@ -190,7 +190,7 @@ public class RemapPlugin extends Plugin
 			default:
 				return client.getLocalPlayer().getName();
 		}
-		System.out.println(client.getLocalPlayer().getName());
+
 		return icon + client.getLocalPlayer().getName();
 	}
 
