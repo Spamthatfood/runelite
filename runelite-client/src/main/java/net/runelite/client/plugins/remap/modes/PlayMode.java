@@ -25,13 +25,16 @@ public class PlayMode extends Mode
 		add(new KeyToKey(KeyEvent.VK_S, KeyEvent.VK_DOWN));
 		add(new KeyToKey(KeyEvent.VK_D, KeyEvent.VK_RIGHT));
 
-		add(new KeyToKey(KeyEvent.VK_X, KeyEvent.VK_CONTROL)); // x control
-
 		add(new KeyToKey(KeyEvent.VK_Q, KeyEvent.VK_ESCAPE)); // inven
 		add(new KeyToKey(KeyEvent.VK_F, KeyEvent.VK_F1)); // attack (fight)
 		add(new KeyToKey(KeyEvent.VK_R, KeyEvent.VK_F4)); // equip (remove)
 		add(new KeyToKey(KeyEvent.VK_E, KeyEvent.VK_F5)); // prayer
 		add(new KeyToKey(KeyEvent.VK_C, KeyEvent.VK_F6)); // magic
+
+		add(new KeyToKey(KeyEvent.VK_X, KeyEvent.VK_F12)); // world / logout
+		add(new KeyToKey(KeyEvent.VK_Z, KeyEvent.VK_F2)); // stats
+		add(new KeyToKey(KeyEvent.VK_G, KeyEvent.VK_F7)); // cc
+		add(new KeyToKey(KeyEvent.VK_V, KeyEvent.VK_F8)); // friends
 
 		// chats
 		add(new CharToMode('t', getPlugin().getTypeMode()));
