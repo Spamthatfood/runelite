@@ -65,6 +65,8 @@ public class PlayMode extends Mode
 		add(KeyToKey.passthrough(KeyEvent.VK_DOWN));
 		add(KeyToKey.passthrough(KeyEvent.VK_RIGHT));
 		add(KeyToKey.passthrough(KeyEvent.VK_CONTROL));
+
+		add(KeyToKey.passthrough(KeyEvent.VK_F12));
 	}
 
 	@Override
